@@ -4,7 +4,7 @@ CS 기초 이론 | 학술·기술 분석 | 알고리즘 문제 해결 과정을 
 
 ## 📂 Directory Structure
 
-- **[algorithm-ps/](./algorithm-ps/README.md):** 문제 해결 능력 배양 (Problem Solving)
+- **[algorithm-ps/](./algorithm-ps/README.md):** 알고리즘 문제 풀이
     - **baekjoon/:** 백준 알고리즘 문제 풀이
     - **leetcode/:** LeetCode 문제 풀이
     - (etc)/:   다른 문제 사이트 풀이
