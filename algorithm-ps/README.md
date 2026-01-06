@@ -24,8 +24,11 @@
     - 해시 테이블의 시간 복잡도($O(1)$) 및 인덱스 관리 원리
 - **Heap / Priority Queue:** [백준 1927 - 최소 힙](https://www.acmicpc.net/problem/1927)
     - `heapq` 모듈을 이용한 우선순위 큐 처리 및 완전 이진 트리 이해
+    - [Python heapq는 어떻게 작동할까?](../tech/data-structure/heapq.md)
 - **Tree / BST:** [백준 1991 - 트리 순회](https://www.acmicpc.net/problem/1991)
     - 재귀를 이용한 전위·중위·후위 순회 메커니즘 학습
+    - [Binary Tree란?](../tech/data-structure/binary-tree.md)
+    - [Binary Search Tree란?](../tech/data-structure/binary-search-tree.md)
 - **Trie:** [백준 14425 - 문자열 집합](https://www.acmicpc.net/problem/14425)
     - 문자열 탐색 최적화를 위한 접두사 트리 구현
 
