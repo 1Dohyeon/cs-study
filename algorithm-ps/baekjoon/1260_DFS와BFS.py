@@ -35,6 +35,7 @@ def dfs(graph, start, visited):
     visited.add(start)
     print(start, end=' ')
     
+    # .get()을 사용하여 키가 없을 때 빈 리스트 반환
     for neighbor in graph.get(start, []):
         if neighbor not in visited:
             dfs(graph, neighbor, visited)
