@@ -34,9 +34,10 @@ print(graph)
 ```python
 def dfs(graph, start_node):
     visited = set()
-    result = []
+    result = [] # 방문 노드를 순서대로 보여줄 결과 배열
 
     def _dfs(node):
+        # 해당 함수에 노드가 들어갈 조건은 한 번도 방문하지 않은 경우임
         visited.add(node)
         result.append(node)
 
