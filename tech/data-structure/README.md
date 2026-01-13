@@ -10,4 +10,4 @@
 8. **[binary-search-tree.md](./)**: BST의 탐색/삽입/삭제 원리와 편향 트리 문제
 9. **[heap-priority-queue.md](./)**: 완전 이진 트리로서의 힙(Heap)과 우선순위 큐 구현
 10. **[graph-basics.md](./)**: 인접 행렬과 인접 리스트를 이용한 그래프 표현법
-11. **[trie.md](./)**: 문자열 탐색 최적화를 위한 '접두사 트리(Prefix Tree)' 자료구조
+11. **[trie.md](./trie.md)**: 문자열 탐색 최적화를 위한 '접두사 트리(Prefix Tree)' 자료구조
