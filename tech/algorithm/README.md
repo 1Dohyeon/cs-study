@@ -11,5 +11,7 @@
 7. **[dynamic-programming.md](./)**: 최적 부분 구조와 메모이제이션(Memoization) vs 타뷸레이션(Tabulation)
 8. **[greedy-algorithm.md](./)**: 탐욕적 선택 조건과 지역 최적해가 전역 최적해가 되는 순간
 9. **[shortest-path.md](./)**: 다익스트라(Dijkstra), 벨만-포드, 플로이드-워셜 알고리즘 비교
-10. **[minimum-spanning-tree.md](./)**: 크루스칼(Kruskal)과 프림(Prim) 알고리즘 (Union-Find 포함)
+    9-1. **[dijkstra.md](./dijkstra.md)**: 다익스트라(Dijkstra) - 최단 경로(양의 가중치)
+10. **[minimum-spanning-tree.md](./minimum_spanning_tree.md)**: 크루스칼(Kruskal)과 프림(Prim) 알고리즘 (Union-Find 포함)
 11. **[two-pointers-sliding-window.md](./)**: 선형 시간 내 배열 구간 효율적 탐색 기법
+12. **[backtracking.md](./backtracking.md)**: 갈 수 있는 모든 경로를 탐색하되, 조건에 맞지 않으면 즉시 뒤로 돌아옴

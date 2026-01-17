@@ -25,6 +25,15 @@ for _ in range(m):
     graph[a].append(b)
     graph[b].append(a)
 
+# 만약 노드 번호가 순차적이라면 인덱스로 접근하는 리스트를 사용할 수 있다.
+# 노드 개수를 알 때 가장 효율적인 방식
+# graph = [[] for _ in range(n + 1)]
+
+# for _ in range(m):
+#     a, b = map(int, input().split())
+#     graph[a].append(b)
+#     graph[b].append(a) # 무방향일 때는 양쪽에 추가
+
 # 그래프 정렬
 for key in graph:
     graph[key].sort()
