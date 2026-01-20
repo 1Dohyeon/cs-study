@@ -39,7 +39,7 @@ def bfs(graph, start):
     result = []
     queue = deque([start])
 
-    # 방문 및 결과에 시작 노드 삽입
+    # 방문에 노드 삽입
     visited.add(start)
 
     # 큐(Queue)가 비워질 때까지 반복: 
