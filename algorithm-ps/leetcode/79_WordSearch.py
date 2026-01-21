@@ -47,11 +47,14 @@ class Solution:
         
         # 단어에 있는 각 알파벳과 보드에 존재하는 각 알파벳 수를 비교
         # ex: 보드판에 있는 'A'가 2개뿐인데 단어엔 'A'가 3개 필요하다면, 불가능
-        count = Counter(sum(board, []))
-        for c, countWord in Counter(word).items():
+        count = Counter(sum(board, [])) # 2차원 리스트를 1차원 리스트로 변환 후 카운트
+
+        # Counter(word) : "찾아야 할 단어에 A는 몇 개, B는 몇 개 필요한지" 장부를 만듦
+        for c, countWord in Counter(word).items(): 
             if count[c] < countWord:
                 return False
         
+        # 단어를 비교할 필요 없음. 어차피 단어가 맞으면 진행하기 때문에, 글자 수만 맞으면 됨
         def _dfs(i, j, k):
             # 단어의 모든 글자를 찾았을 때
             if k == len(word):
