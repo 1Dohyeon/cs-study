@@ -53,4 +53,5 @@ class Solution:
             # 자식들의 결과를 합산해서 위로 던짐
             return _dfs(node.left, True) + _dfs(node.right, False)
 
+        # 루트 노드는 왼쪽 자식이 아니므로 False 전달
         return _dfs(root, False)
