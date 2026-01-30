@@ -72,3 +72,37 @@ class Solution:
                 if grid[r][c] == 1:
                     # 섬이 하나이므로, 여기서 반환되는 값이 곧 전체 둘레
                     return dfs(r, c)
+
+    # BFS로 구현
+    def islandPerimeter(self, grid: List[List[int]]) -> int:
+        rows, cols = len(grid), len(grid[0])
+        
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1:
+                    # 섬을 발견한 즉시 BFS 시작 후 결과 바로 반환 (Early Exit)
+                    return self._bfs(grid, r, c, rows, cols)
+        return 0
+
+    def _bfs(self, grid, start_r, start_c, rows, cols):
+        q = deque([(start_r, start_c)])
+        grid[start_r][start_c] = -1  # 시작점 방문 처리
+        perimeter = 0
+        
+        while q:
+            r, c = q.popleft()
+            
+            # 상하좌우 방향 설정
+            for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                nr, nc = r + dr, c + dc
+                
+                # 1. 그리드 범위를 벗어나거나 물(0)인 경우 -> 둘레 증가
+                if nr < 0 or nr >= rows or nc < 0 or nc >= cols or grid[nr][nc] == 0:
+                    perimeter += 1
+                
+                # 2. 방문하지 않은 땅(1)인 경우 -> 큐에 추가 및 방문 처리
+                elif grid[nr][nc] == 1:
+                    grid[nr][nc] = -1  # 중복 방문 방지를 위해 넣을 때 바로 처리
+                    q.append((nr, nc))
+                    
+        return perimeter
