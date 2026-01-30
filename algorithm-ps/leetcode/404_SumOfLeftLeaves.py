@@ -29,6 +29,7 @@ The number of nodes in the tree is in the range [1, 1000].
 """
 # Definition for a binary tree node.
 from pyparsing import Optional
+from collections import deque
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -36,6 +37,7 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
+    # DFS 재귀 풀이
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
         def _dfs(node, is_left):
             if not node:
@@ -55,3 +57,23 @@ class Solution:
 
         # 루트 노드는 왼쪽 자식이 아니므로 False 전달
         return _dfs(root, False)
+    
+    # BFS 풀이
+    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        
+        q = deque([(root, False)])
+        ans = 0
+
+        while q:
+            node, isLeft = q.popleft()
+            if isLeft and not node.left and not node.right:
+                ans += node.val
+
+            if node.left:
+                q.append((node.left, True))
+            if node.right:
+                q.append((node.right, False))
+
+        return ans
