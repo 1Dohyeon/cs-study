@@ -52,8 +52,7 @@ class Solution:
 
         result = []
         q = deque([root])
-        level = 1
-
+        
         while q:
             level_size = len(q)
             current_nodes = []
