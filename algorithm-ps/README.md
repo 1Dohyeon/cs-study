@@ -52,7 +52,7 @@
   - 다익스트라(Dijkstra) 알고리즘을 이용한 가중치 그래프 내 최단 거리 산출
 - **MST:** [백준 1197 - 최소 스패닝 트리](https://www.acmicpc.net/problem/1197)
   - Kruskal / Prim 알고리즘 및 Union-Find를 활용한 최소 비용 간선 연결
-- **Two Pointers:** [백준 2003 - 수들의 합 2](https://www.acmicpc.net/problem/2003) / [백준 2559 - 수열](https://www.acmicpc.net/problem/2559)
+- **Two Pointers:** [백준 2003 - 수들의 합 2](https://www.acmicpc.net/problem/2003) / [백준 1920 - 수 찾기](https://www.acmicpc.net/problem/1920)
   - 구간 포인터 이동 및 슬라이딩 윈도우를 이용한 $O(N)$ 연산 효율화
 
 ### 3. 추가 추천 문제 (대표 문제 보강)
