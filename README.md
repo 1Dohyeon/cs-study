@@ -9,8 +9,7 @@ CS 기초 이론 | 학술·기술 분석 | 알고리즘 문제 해결 과정을 
     - **leetcode/:** LeetCode 문제 풀이
     - (etc)/:   다른 문제 사이트 풀이
 - **[tech/](./tech/README.md)**: 이론 학습 및 인사이트 정리
-    - **data-structure/:** 자료구조 원리 및 특징
-    - **algorithm/:** 알고리즘 개념 및 설계
-    - **network/:** 네트워크, HTTP, 통신 프로토콜
+    - **[data-structure/](./tech/data-structure/README.md):** 자료구조 원리 및 특징
+    - **[algorithm/](./tech/algorithm/README.md):** 알고리즘 개념 및 설계
+    - **[network/](./tech/network/README.md):** 네트워크, HTTP, 통신 프로토콜
     - (etc)/: CS 기초, OS, DB 등 지속적 확장
-- README.md
