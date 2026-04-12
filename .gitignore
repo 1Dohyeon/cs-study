@@ -2,3 +2,4 @@ temp
 dump
 *.log
 *.tmp
+.claude
