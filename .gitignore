@@ -3,3 +3,4 @@ dump
 *.log
 *.tmp
 .claude
+CLAUDE.md
