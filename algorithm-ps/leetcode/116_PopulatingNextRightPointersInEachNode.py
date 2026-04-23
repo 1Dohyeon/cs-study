@@ -37,11 +37,11 @@ class Node:
         self.next = next
 """
 
-from tables import Node
 from collections import deque
+from typing import Optional
 
 class Solution:
-    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+    def connect(self, root: Optional[Node]) -> Optional[Node]:
         if not root:
             return None
 
