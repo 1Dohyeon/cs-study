@@ -35,19 +35,21 @@ Constraints:
 
 from typing import List
 
+from typing import List
+
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         res = []
-        nums.sort()  # 투 포인터를 쓰기 위해 반드시 정렬!
+        nums.sort()  # 투 포인터를 쓰기 위해 반드시 정렬
         
         n = len(nums)
         
-        # 1. 조기 종료 (Early Exit)
+        # 조기 종료 nums 개수가 2 이하, 최소값이 1이상, 최대값이 -1이하인 경우
         if n < 3 or nums[0] > 0 or nums[-1] < 0:
             return []
 
         for i in range(n - 2):
-            # 2. 고정값(nums[i]) 중복 제거
+            # 고정값(nums[i]) 중복 제거
             # 이전 값과 같다면 이미 그 숫자로 만들 수 있는 조합은 다 찾은 상태임
             if i > 0 and nums[i] == nums[i-1]:
                 continue
@@ -66,7 +68,7 @@ class Solution:
                     # 합이 0인 경우 정답 리스트에 추가
                     res.append([nums[i], nums[left], nums[right]])
                     
-                    # 3. 포인터 이동 및 중복 제거
+                    # 포인터 이동 및 중복 제거
                     # 정답을 찾은 후에도 left나 right가 가리키는 값이 다음 값과 같다면 건너뜀
                     while left < right and nums[left] == nums[left + 1]:
                         left += 1
