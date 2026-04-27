@@ -78,3 +78,34 @@ class Solution:
                     right -= 1
                     
         return res
+    
+    # set을 이용한 풀이 
+    # 중복 제거가 간편하지만, 정답 리스트의 순서가 보장되지 않고, 메모리 효율이 상대적으로 떨어질 수 있음
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        res = set()
+        nums.sort()
+        n = len(nums)
+
+        if n < 3 or nums[0] > 0 or nums[-1] < 0:
+            return []
+
+        for i in range(n-2):
+            # 예외처리: i가 이전값과 같으면 해당 숫자 조합은 이미 다 찾음
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+
+            left, right = i + 1, n - 1
+
+            while left < right:
+                total = nums[i] + nums[left] + nums[right]
+
+                if total < 0:
+                    left += 1
+                elif total > 0:
+                    right -= 1
+                else:
+                    res.add((nums[i], nums[left], nums[right]))
+                    left += 1
+                    right -= 1
+
+        return [list(x) for x in res]
