@@ -59,3 +59,40 @@ class Solution:
                         left += 1
                         right -= 1
         return res
+    
+    # set을 이용한 풀이
+    # 중복 제거가 간편하지만, 정답 리스트의 순서가 보장되지 않고, 메모리 효율이 상대적으로 떨어질 수 있음
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        res = set()
+        nums.sort()
+        n = len(nums)
+
+        for i in range(n-3):
+            # 고정값(nums[i]) 중복 방지
+            # 이전 값과 같다면 이미 그 숫자로 만들 수 있는 조합은 다 찾은 상태임
+            if i > 0 and nums[i] == nums[i-1]:
+                continue 
+
+            for j in range(i+1, n-2):
+                # 고정값(nums[j]) 중복 방지
+                if j > i + 1 and nums[j] == nums[j-1]:
+                    continue
+
+                left, right = j + 1, n - 1
+
+                while left < right:
+                    total = nums[i] + nums[j] + nums[left] + nums[right]
+
+                    if total < target:
+                        left += 1
+                    elif total > target:
+                        right -= 1
+                    else:
+                        res.add((nums[i], nums[j], nums[left],nums[right]))
+                        left += 1
+                        right -= 1
+
+
+        return [list(x) for x in res]
+
+
