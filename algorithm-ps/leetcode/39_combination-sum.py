@@ -61,3 +61,28 @@ class Solution:
 
         backtrack(target, 0, [])
         return res
+    
+
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = []
+        # 1. 먼저 정렬 => 가지치기(Pruning)할 때 유용 => 굳이 끝까지 탐색할 필요 없음
+        candidates.sort()
+        n = len(candidates)
+
+        def backtrack(remain, start, path):
+            if remain == 0:
+                res.append(list(path))
+                return
+
+            for i in range(start, n):
+                # 2. 가지치기 (Pruning)
+                # 현재 숫자를 뺐는데 이미 음수라면, 뒤에 있는 더 큰 숫자들은 볼 필요도 없음
+                if remain - candidates[i] < 0:
+                    break 
+                
+                path.append(candidates[i])
+                backtrack(remain - candidates[i], i, path)
+                path.pop()
+
+        backtrack(target, 0, [])
+        return res
