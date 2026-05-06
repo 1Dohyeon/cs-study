@@ -37,7 +37,6 @@ Constraints:
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
-        # 정렬 순으로 선택을 위해 미리 정렬
         candidates.sort()
 
         def backtrack(remain, start, path):
@@ -45,16 +44,18 @@ class Solution:
                 res.append(list(path))
                 return
             
-            if remain < 0:
-                return
-
             for i in range(start, len(candidates)):
-                # 현재 결정(for문 안)에서 같은 숫자가 연속되면 건너뜀
-                # 단, i > start 조건이 중요: 현재 깊이에서의 첫 번째 선택은 허용
+                # 같은 레벨(형제 노드)에서 이미 사용한 숫자와 같다면 건너뜀
+                # # i > start 조건은 "현재 선택하려는 칸"에서 첫 번째 숫자가 아닐 때를 의미함
                 if i > start and candidates[i] == candidates[i-1]:
                     continue
 
+                # 가지치기: 정렬되어 있으므로 이미 넘치면 뒤는 볼 필요 없음
+                if remain - candidates[i] < 0:
+                    break # or return
+
                 path.append(candidates[i])
+                # # i+1을 넘겨서 현재 숫자를 중복해서 쓰지 않도록 함
                 backtrack(remain - candidates[i], i+1, path)
                 path.pop()
 
