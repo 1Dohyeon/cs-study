@@ -61,3 +61,18 @@ class Solution:
 
         backtrack(target, 0, [])
         return res
+
+
+"""
+i > start 조건이 왜 필요한지 예시로 설명:
+
+[ 1(A), 1(B), 2 ]
+
+Level 0: [ 1(A) ]를 뽑음 (첫 후보 면제)
+   │
+   └── Level 1: [ 1(B) ]를 뽑음 (이 층의 첫 후보(i == start)이므로 면제!) -> [1, 1] (OK)
+
+Level 0: [ 1(B) ]를 뽑으려 함 (i=1, start=0 이므로 i > start)
+   │   그런데 1(B) == 1(A) 이네? 
+   └── [ 1(B) ]는 SKIP! (이미 1(A)가 모든 경우의 수를 다 확인했음)
+"""
