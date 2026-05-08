@@ -41,16 +41,18 @@ class Solution:
 
         if total_gas < total_cost:
             return -1
-        
+
         start_index = 0
         current_gas = 0
         
         for i in range(len(gas)):
             current_gas += gas[i] - cost[i]
 
-            # current_gas가 0보다 작으면, 0으로 초기화하고 다음 인덱스를 시작점으로 설정
+            # current_gas가 0보다 작으면 진행 못함
             if current_gas < 0:
-                start_index = i + 1
+                # 따라서 0으로 초기화하고 다음 인덱스를 시작점으로 설정
                 current_gas = 0
+                start_index = i + 1
+            
 
         return start_index
