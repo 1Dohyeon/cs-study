@@ -55,7 +55,7 @@ class Solution:
                 return False
         
         # 단어를 비교할 필요 없음. 어차피 단어가 맞으면 진행하기 때문에, 글자 수만 맞으면 됨
-        def _dfs(i, j, k):
+        def _dfs(i, j, k): # i, j : 보드판에서 현재 위치, k : 단어에서 현재 위치
             # 단어의 모든 글자를 찾았을 때
             if k == len(word):
                 return True
