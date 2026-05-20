@@ -2,6 +2,7 @@
    - [LeetCode 15 - 3Sum](https://leetcode.com/problems/3sum/description/): [문제 풀이](./leetcode/15_3sum.py)
    - [LeetCode 18 - 4Sum](https://leetcode.com/problems/4sum/description/)
    - 정렬 이후 포인터 이동 규칙으로 중복 제거와 해 탐색 최적화
+   - [LeetCode 42 - Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
 
 2. **Tree View Variants:**
    - [LeetCode 103 - Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/)
