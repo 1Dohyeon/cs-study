@@ -24,3 +24,7 @@
 6. **Hash / Map:**
    - [LeetCode 380 - Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/description/)
    - [LeetCode 381 - Insert Delete GetRandom O(1) - Duplicates allowed](https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/description/)
+
+7. **Matrix**
+   - [LeetCode 48 - Rotate Image](https://leetcode.com/problems/rotate-image/description/)
+   - [LeetCode 54 - Spiral Matrix](https://leetcode.com/problems/spiral-matrix/description/)
