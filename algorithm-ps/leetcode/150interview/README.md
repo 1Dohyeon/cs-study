@@ -1,0 +1,15 @@
+### Problem List
+
+1. [Merge Sorted Array](./88.merge-sorted-array.py): [Leetcode URL](https://leetcode.com/problems/merge-sorted-array?envType=study-plan-v2&envId=top-interview-150)
+2. [Remove Element](./27.remove-element.py): [Leetcode URL](https://leetcode.com/problems/remove-element?envType=study-plan-v2&envId=top-interview-150)
+3. [Remove Duplicates from Sorted Array](./26.remove-duplicates-from-sorted-array.py): [Leetcode URL](https://leetcode.com/problems/remove-duplicates-from-sorted-array?envType=study-plan-v2&envId=top-interview-150)
+4. [Remove Duplicates from Sorted Array II](./80.remove-duplicates-from-sorted-array-ii.py): [Leetcode URL](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii?envType=study-plan-v2&envId=top-interview-150)
+5. [Majority Element](./169.majority-element.py): [Leetcode URL](https://leetcode.com/problems/majority-element?envType=study-plan-v2&envId=top-interview-150)
+6. [Rotate Array](./189.rotate-array.py): [Leetcode URL](https://leetcode.com/problems/rotate-array?envType=study-plan-v2&envId=top-interview-150)
+7. [Best Time to Buy and Sell Stock](./121.best-time-to-buy-and-sell-stock.py): [Leetcode URL](https://leetcode.com/problems/best-time-to-buy-and-sell-stock?envType=study-plan-v2&envId=top-interview-150)
+8. [Best Time to Buy and Sell Stock II](./122.best-time-to-buy-and-sell-stock-ii.py): [Leetcode URL](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii?envType=study-plan-v2&envId=top-interview-150)
+9. [Jump Game](./55.jump-game.py): [Leetcode URL](https://leetcode.com/problems/jump-game?envType=study-plan-v2&envId=top-interview-150)
+10. [Jump Game II](./45.jump-game-ii.py): [Leetcode URL](https://leetcode.com/problems/jump-game-ii?envType=study-plan-v2&envId=top-interview-150)
+11. [H-Index](./274.h-index.py): [Leetcode URL](https://leetcode.com/problems/h-index?envType=study-plan-v2&envId=top-interview-150)
+12. [Insert Delete GetRandom O(1)](<./380.InsertDeleteGetRandomO(1).py>): [Leetcode URL](https://leetcode.com/problems/insert-delete-getrandom-o1?envType=study-plan-v2&envId=top-interview-150)
+13. [Product of Array Except Self](./238.product-of-array-except-self.py): [Leetcode URL](https://leetcode.com/problems/product-of-array-except-self/?envType=study-plan-v2&envId=top-interview-150)
