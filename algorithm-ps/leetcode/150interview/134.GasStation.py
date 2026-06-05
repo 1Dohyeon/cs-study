@@ -32,13 +32,12 @@ Therefore, you can't travel around the circuit once no matter where you start.
  
 """
 
-from typing import List
-
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         total_gas = sum(gas)
         total_cost = sum(cost)
 
+        # 전체 기름양이 전체 소모량보다 적으면 어떻게 돌아도 완주 불가능
         if total_gas < total_cost:
             return -1
 
@@ -46,13 +45,13 @@ class Solution:
         current_gas = 0
         
         for i in range(len(gas)):
+            # 현재 출발지에서부터의 실시간 기름 잔여량 누적
             current_gas += gas[i] - cost[i]
 
-            # current_gas가 0보다 작으면 진행 못함
+            # 기름이 바닥나서 차가 멈추는 순간 (현재까지의 모든 출발지 후보 탈락)
             if current_gas < 0:
-                # 따라서 0으로 초기화하고 다음 인덱스를 시작점으로 설정
-                current_gas = 0
-                start_index = i + 1
-            
+                current_gas = 0        # 기름통 비우고 리셋
+                start_index = i + 1    # 다음 인덱스를 새로운 출발지 후보로 지정
 
+        # 전체 총량이 합격이므로 마지막까지 살아남은 출발지가 무조건 유일한 정답
         return start_index
