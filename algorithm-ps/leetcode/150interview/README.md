@@ -22,3 +22,8 @@
 **Design / Hash Table:**
 
 - [Insert Delete GetRandom O(1)](<./380.InsertDeleteGetRandomO(1).py>): [Leetcode URL](https://leetcode.com/problems/insert-delete-getrandom-o1?envType=study-plan-v2&envId=top-interview-150)
+
+**Backtracking:**
+
+- [Letter Combinations of a Phone Number](./17.letter-combinations-of-a-phone-number.py): [Leetcode URL](https://leetcode.com/problems/letter-combinations-of-a-phone-number?envType=study-plan-v2&envId=top-interview-150)
+- [Combinations](./77.combinations.py): [Leetcode URL](https://leetcode.com/problems/combinations?envType=study-plan-v2&envId=top-interview-150)
