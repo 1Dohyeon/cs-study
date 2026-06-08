@@ -27,3 +27,7 @@
 
 - [Letter Combinations of a Phone Number](./17.letter-combinations-of-a-phone-number.py): [Leetcode URL](https://leetcode.com/problems/letter-combinations-of-a-phone-number?envType=study-plan-v2&envId=top-interview-150)
 - [Combinations](./77.combinations.py): [Leetcode URL](https://leetcode.com/problems/combinations?envType=study-plan-v2&envId=top-interview-150)
+
+**Tree / BFS-DFS:**
+
+- [Maximum Depth of Binary Tree](./104.maximum-depth-of-binary-tree.py): [Leetcode URL](https://leetcode.com/problems/maximum-depth-of-binary-tree/?envType=study-plan-v2&envId=top-interview-150)
