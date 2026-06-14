@@ -32,3 +32,4 @@
 
 - [Maximum Depth of Binary Tree](./104.maximum-depth-of-binary-tree.py): [Leetcode URL](https://leetcode.com/problems/maximum-depth-of-binary-tree/?envType=study-plan-v2&envId=top-interview-150)
 - [Same Tree](./100.same-tree.py): [Leetcode URL](https://leetcode.com/problems/same-tree/?envType=study-plan-v2&envId=top-interview-150)
+- [Binary Tree Right Side View](./199.binary-tree-right-side-view.py): [Leetcode URL](https://leetcode.com/problems/binary-tree-right-side-view/description/?envType=study-plan-v2&envId=top-interview-150)
