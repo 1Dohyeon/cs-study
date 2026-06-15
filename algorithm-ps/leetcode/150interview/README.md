@@ -1,5 +1,7 @@
 ### Problem List
 
+> LeetCode Link: https://leetcode.com/studyplan/top-interview-150/
+
 **Array:**
 
 - [Merge Sorted Array](./88.merge-sorted-array.py): [Leetcode URL](https://leetcode.com/problems/merge-sorted-array?envType=study-plan-v2&envId=top-interview-150)
@@ -10,6 +12,10 @@
 - [Rotate Array](./189.rotate-array.py): [Leetcode URL](https://leetcode.com/problems/rotate-array?envType=study-plan-v2&envId=top-interview-150)
 - [H-Index](./274.h-index.py): [Leetcode URL](https://leetcode.com/problems/h-index?envType=study-plan-v2&envId=top-interview-150)
 - [Product of Array Except Self](./238.product-of-array-except-self.py): [Leetcode URL](https://leetcode.com/problems/product-of-array-except-self/?envType=study-plan-v2&envId=top-interview-150)
+
+**Two Pointers:**
+
+- [3Sum](./15.3sum.py): [Leetcode URL](https://leetcode.com/problems/3sum?envType=study-plan-v2&envId=top-interview-150)
 
 **Greedy:**
 
