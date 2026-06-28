@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인 성공</title>
+</head>
+<body>
+  <h1>로그인 성공</h1>
+  <h3>JWT Token</h3>
+  <textarea id="token" rows="4" cols="80"><%= token %></textarea>
+  <br><br>
+  <button onclick="getProfile()">GET /me 테스트</button>
+  <pre id="result"></pre>
+  <script>
+    async function getProfile() {
+      const token = document.getElementById('token').value;
+      const res = await fetch('/me', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>

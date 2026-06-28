@@ -10,115 +10,121 @@ Express + TypeScript + Prisma + MySQL 조합으로 실무 구조를 익힌다.
 | 웹 프레임워크 | Express + TypeScript |
 | OAuth | passport + passport-google-oauth20 |
 | 인증 토큰 | jsonwebtoken (JWT) |
-| ORM | Prisma |
-| DB | MySQL |
+| ORM | Prisma 5 + MySQL |
+| 로거 | winston |
 | 환경 변수 | dotenv |
+| 뷰 | EJS |
 
-## 구현 범위
+## 시작하기
 
-### 인증 흐름
+```bash
+npm install
+cp .env.example .env   # 값 채우기
+
+npx prisma migrate dev # DB 테이블 생성
+npm run dev            # 개발 서버 실행
+```
+
+## 명령어
+
+| 명령어 | 설명 |
+|--------|------|
+| `npm run dev` | ts-node-dev로 개발 서버 실행 (핫리로드) |
+| `npm run build` | TypeScript 컴파일 → dist/ |
+| `npm run start` | 컴파일된 파일로 서버 실행 |
+| `npx prisma migrate dev` | 스키마 변경 사항을 마이그레이션으로 적용 |
+| `npx prisma generate` | Prisma Client 재생성 |
+| `npx prisma studio` | DB GUI 실행 |
+
+## 프로젝트 구조
+
+```
+express-api/
+  prisma/
+    schema.prisma          ← User 모델 정의
+    migrations/            ← 마이그레이션 이력
+  src/
+    app.ts                 ← 서버 진입점. 미들웨어·라우터 조립
+    lib/
+      prisma.ts            ← PrismaClient 싱글톤
+      logger.ts            ← winston 로거 싱글톤
+    types/
+      auth.ts              ← JwtPayload, GoogleAuthResult 인터페이스
+      request.ts           ← JwtRequest, GoogleCallbackRequest 커스텀 Request 타입
+    repositories/
+      user.repository.ts   ← DB 접근 (findById, upsert)
+    services/
+      auth.service.ts      ← Google 사용자 upsert + JWT 발급
+      me.service.ts        ← userId로 프로필 조회
+    middleware/
+      auth.ts              ← JWT 검증, req에 jwtPayload 주입
+    routes/
+      auth.ts              ← Google 전략 등록, /auth 라우터 + 핸들러
+      me.ts                ← /me 라우터 + 핸들러
+      view.ts              ← /, /callback 뷰 라우터
+  views/
+    index.ejs              ← 로그인 페이지
+    callback.ejs           ← 로그인 성공 페이지 (JWT 확인 + /me 테스트)
+```
+
+## 레이어 구조
+
+Router-Service-Repository 3레이어 패턴. 라우터가 req/res 처리까지 담당하고, 비즈니스 로직은 Service, DB 접근은 Repository가 담당한다.
+
+```
+Router → Service → Repository → DB
+```
+
+| 레이어 | 역할 |
+|--------|------|
+| Router | 경로 등록 + req 파싱 + service 호출 + res 반환 |
+| Service | 비즈니스 로직 |
+| Repository | DB 접근 (Prisma) |
+
+인스턴스는 각 라우터 파일에서 직접 연결한다.
+
+```ts
+const userRepository = new UserRepository(prisma);
+const meService      = new MeService(userRepository);
+```
+
+## 인증 흐름
+
+### Google OAuth 로그인
 
 ```
 클라이언트
   │
   ├─ GET /auth/google
-  │     └─ Google 로그인 페이지로 리다이렉트
+  │     └─ passport가 Google 로그인 페이지로 리다이렉트
   │
   └─ GET /auth/google/callback   ← Google이 code와 함께 리다이렉트
-        ├─ code → Google API → 사용자 정보(email, name, googleId) 획득
-        ├─ DB에 User upsert (신규면 insert, 기존이면 그냥 조회)
-        └─ JWT 발급 후 응답
+        ├─ passport가 code → Google API → 사용자 정보(email, name, googleId) 획득
+        ├─ DB에 User upsert (신규면 insert, 기존이면 조회)
+        ├─ JWT 발급
+        └─ /callback?token=... 로 리다이렉트
 ```
 
-### 엔드포인트
-
-| 메서드 | 경로 | 인증 | 설명 |
-|--------|------|------|------|
-| GET | `/auth/google` | 불필요 | Google OAuth 시작 |
-| GET | `/auth/google/callback` | 불필요 | OAuth 콜백, JWT 발급 |
-| GET | `/me` | JWT 필요 | 내 프로필 조회 |
-
-## 프로젝트 구조
-
-Controller-Service-Repository 패턴 적용. NestJS와 동일한 레이어 분리지만 DI 컨테이너 없이 직접 인스턴스를 연결한다.
+### JWT 인증 (`/me`)
 
 ```
-express-api/
-  prisma/
-    schema.prisma               ← User 모델 정의
-  src/
-    controllers/
-      auth.controller.ts        ← req/res 처리만 담당
-      me.controller.ts
-    services/
-      auth.service.ts           ← 비즈니스 로직 (JWT 발급, upsert 판단)
-    repositories/
-      user.repository.ts        ← Prisma 호출만 담당
-    routes/
-      auth.ts                   ← Router에 controller 연결
-      me.ts
-    middleware/
-      auth.ts                   ← JWT 검증, req.user 주입
-    lib/
-      prisma.ts                 ← Prisma Client 싱글톤
-    app.ts                      ← Express 앱 진입점
-  .env
-  package.json
-  tsconfig.json
+클라이언트
+  │
+  └─ GET /me
+        Authorization: Bearer <token>
+              │
+              ├─ authMiddleware: 토큰 검증 → req에 jwtPayload { userId } 주입
+              └─ 라우터 핸들러: userId로 DB 조회 → 프로필 응답
 ```
 
-### 레이어 역할
+## 타입 설계
 
-| 레이어 | 역할 | NestJS 대응 |
-|--------|------|------------|
-| Router | 경로 등록, controller 연결 | `@Controller` 경로 부분 |
-| Controller | req 파싱 → service 호출 → res 반환 | `@Controller` 메서드 |
-| Service | 비즈니스 로직 | `@Injectable` Service |
-| Repository | DB 접근 (Prisma) | `@Injectable` Repository |
-
-### 수동 DI
-
-NestJS는 프레임워크가 인스턴스를 주입하지만 Express는 직접 연결한다.
+Express v5의 `Request` 타입은 전역 네임스페이스 augmentation이 동작하지 않아 커스텀 intersection 타입으로 해결한다.
 
 ```ts
-const userRepository = new UserRepository(prisma);
-const authService    = new AuthService(userRepository);
-const authController = new AuthController(authService);
+// src/types/request.ts
+type JwtRequest            = Request & { jwtPayload: JwtPayload }
+type GoogleCallbackRequest = Request & { user: GoogleAuthResult }
 ```
 
-## DB 스키마
-
-```prisma
-model User {
-  id        Int      @id @default(autoincrement())
-  googleId  String   @unique
-  email     String   @unique
-  name      String
-  createdAt DateTime @default(now())
-}
-```
-
-## 구현 순서
-
-1. 패키지 설치 및 tsconfig 설정
-2. `.env` 작성 (DB URL, Google Client ID/Secret, JWT Secret)
-3. Prisma 스키마 작성 및 `npx prisma migrate dev`
-4. `src/lib/prisma.ts` — Prisma Client 싱글톤
-5. `src/repositories/user.repository.ts` — DB 접근 (findByGoogleId, upsert)
-6. `src/services/auth.service.ts` — Google 사용자 정보로 upsert + JWT 발급
-7. `src/controllers/auth.controller.ts` — passport 콜백 처리, JWT 응답
-8. `src/middleware/auth.ts` — Authorization 헤더에서 JWT 검증, req.user 주입
-9. `src/services/me.service.ts` — userId로 프로필 조회
-10. `src/controllers/me.controller.ts` — 프로필 응답
-11. `src/routes/` — Router에 controller 연결
-12. `src/app.ts` — 라우터 조립
-
-## 환경 변수 (.env)
-
-```
-DATABASE_URL="mysql://root:password@localhost:3306/express_api"
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-GOOGLE_CALLBACK_URL=http://localhost:3000/auth/google/callback
-JWT_SECRET=
-```
+JWT 미들웨어는 `JwtRequest`로 캐스팅 후 `jwtPayload`를 주입하고, OAuth 콜백 핸들러는 `GoogleCallbackRequest`로 캐스팅 후 `user.token`을 꺼낸다.
